@@ -5,24 +5,6 @@ import glob as glob
 import os
 
 
-def loadDataset(path, header, indexCol, colL, labelCol, dropFeats=[], missReplacement=[], missCols=[]):
-    print("Pre-processing data...")
-    # get formatted pandas dataset
-    dataset = formatData(path, header, indexCol)
-
-    # Drop columns not using
-    if(len(dropFeats) != 0):
-        dataset.drop(dropFeats, axis=1, inplace=True)
-
-    # replace the Infinity values with NaNs
-    dataset = dataset.replace(to_replace=np.inf, value=np.nan)
-    # drop any row with a NaN
-    dataset = dataset.dropna(how="any")
-
-    print("done")
-    return dataset
-
-
 def datasetInfo():
     return r"C:\Users\jakem\Documents\GitHub\2020\wineQuality_myproj\data", 0, None, 10, 11, 11
 
