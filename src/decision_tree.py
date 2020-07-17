@@ -5,7 +5,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.tree import export_graphviz
 # from sklearn.externals.six import StringIO
 # from IPython.display import Image
-
+import pandas as pd
 
 def treeAnalysis(data, Xmax, labelCol,maxDepth,minImpurity,maxLeaf,maxFeat,minSplit,minLeaf,criterion):
     # split into input (X) and output (y) variables
@@ -30,6 +30,7 @@ def treeAnalysis(data, Xmax, labelCol,maxDepth,minImpurity,maxLeaf,maxFeat,minSp
     # fit the model with train sets
     dt.fit(X_train, y_train)
     score = dt.score(X_test, y_test)
+    print(score*100)
     return(score)
 
     # summarize history for accuracy
