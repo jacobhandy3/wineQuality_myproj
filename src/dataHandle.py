@@ -6,7 +6,7 @@ import os
 
 
 def datasetInfo():
-    return r"C:\Users\jakem\Documents\GitHub\2020\wineQuality_myproj\data", 0, None, 10, 11, 11
+    return r"C:\Users\jakem\Documents\GitHub\wineQuality_myproj\data", 0, None, 10, 11, 11
 
 # takes a folder path to find csv files, 0 for a header and None for no header
 # and 0 for an index column or None for no index column
