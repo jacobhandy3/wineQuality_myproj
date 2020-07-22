@@ -16,32 +16,33 @@ depth = list(range(1,51,1))                 #50
 impurity = np.arange(0.0,1.1,0.1)             #11
 maxLeaf = [None,2]                                #2
 feat = [None,"sqrt","log2"]            #3
-split = np.arange(0.1,0.6,0.1)                                 #5
-minLeaf = np.arange(0.05,0.55,0.05)                                 #10
+minSplit = list(range(2,(classNum+1),1))                                 #10
+minLeaf = 2                              #
 crit = ["gini", "entropy"]              #2
-for c in crit:  #2
+""" for c in crit:  #2
     for f in feat: #3
         for maL in maxLeaf: #2
             for d in depth: #50
                 for i in impurity:  #11
-                    for s in split: #5
-                        for miL in minLeaf: #10
-                            score = treeAnalysis(data=dataset, Xmax=Xmax, labelCol=labelCol,
-                                    maxDepth=d,minImpurity=i,maxLeaf=maL,maxFeat=f,
-                                    minSplit=s,minLeaf=miL,criterion=c)
-                            if score > high_score["score"]:
-                                high_score["score"] = score
-                                high_score["depth"] = d
-                                high_score["impurity"] = i
-                                high_score["feat"] = f
-                                high_score["crit"] = c
-                                high_score["maxLeaf"] = maL
-                                high_score["split"] = s
-                                high_score["minLeaf"] = miL
-
-for keys,values in high_score.items():
+                    for ms in minSplit: #10
+                        score = treeAnalysis(data=dataset, Xmax=Xmax, labelCol=labelCol,
+                                maxDepth=d,minImpurity=i,maxLeaf=maL,maxFeat=f,
+                                minSplit=ms,minLeaf=minLeaf,criterion=c)
+                        if score > high_score["score"]:
+                            high_score["score"] = score
+                            high_score["depth"] = d
+                            high_score["impurity"] = i
+                            high_score["feat"] = f
+                            high_score["crit"] = c
+                            high_score["maxLeaf"] = maL
+                            high_score["minSplit"] = ms
+                            high_score["minLeaf"] = minLeaf """
+print(treeAnalysis(data=dataset, Xmax=Xmax, labelCol=labelCol,
+                                maxDepth=22,minImpurity=0.0,maxLeaf=None,maxFeat="sqrt",
+                                minSplit=2,minLeaf=2,criterion="entropy"))
+""" for keys,values in high_score.items():
     print(keys)
-    print(values)
+    print(values) """
 #summarize history for accuracy
 # plt.plot(accuracies)
 # plt.title('model accuracy')
