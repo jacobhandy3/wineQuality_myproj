@@ -30,7 +30,7 @@ def treeAnalysis(data, Xmax, labelCol,maxDepth,minImpurity,maxLeaf,maxFeat,minSp
     # fit the model with train sets
     dt.fit(X_train, y_train)
     score = dt.score(X_test, y_test)
-    print(score*100)
+    print("score: ", (score*100))
     return(score)
 
     # summarize history for accuracy
