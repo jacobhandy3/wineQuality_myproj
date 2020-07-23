@@ -1,12 +1,12 @@
 from NNcode import NNanalysis
 from dataHandle import datasetInfo, formatData
 from decision_tree import treeAnalysis
-from pydot import graph_from_dot_data
+# from pydot import graph_from_dot_data
 import numpy as np
 import matplotlib.pyplot as plt
 import decimal
 
-path, header, indexCol, Xmax, labelCol, classNum = datasetInfo()
+path, header, indexCol, labelCol, classNum = datasetInfo()
 dataset = formatData(path=path, head=header, indexCol=indexCol)
 """ NNanalysis(path=path, dataset=dataset, Xmax=Xmax,
            labelCol=labelCol, classNum=classNum)
@@ -17,17 +17,17 @@ impurity = 0.0            #1
 maxLeaf = [None,2]                                #2
 feat = [None,"sqrt","log2"]            #3
 minSplit = list(range(2,26,1))                                 #24
-minLeaf = [1,2]                              #2
+minLeaf = list(range(1,101,1))                              #100
 crit = ["gini", "entropy"]              #2
-count = 0
+""" count = 0
 for c in crit:  #2
     for f in feat: #3
-        for miL in minLeaf: #2
+        for d in depth: #50
             for ms in minSplit: #24
-                for d in depth: #50
+                for miL in minLeaf: #100
                     count+=1
                     print("iteration #: ", count)
-                    score = treeAnalysis(data=dataset, Xmax=Xmax, labelCol=labelCol,
+                    score = treeAnalysis(data=dataset, labelCol=labelCol,
                             maxDepth=d,minImpurity=0.0,maxLeaf=None,maxFeat=f,
                             minSplit=ms,minLeaf=miL,criterion=c)
                     print("parameters: ",c," / ",f," / minLeaf:",miL," / minSplit",ms," / depth:",d," / maxLeaf",None," / minImpurity",0.0)
@@ -39,13 +39,13 @@ for c in crit:  #2
                         high_score["crit"] = c
                         high_score["maxLeaf"] = None
                         high_score["minSplit"] = ms
-                        high_score["minLeaf"] = miL
-""" print(treeAnalysis(data=dataset, Xmax=Xmax, labelCol=labelCol,
+                        high_score["minLeaf"] = miL """
+print(treeAnalysis(data=dataset, labelCol=labelCol,
                                 maxDepth=24,minImpurity=0.0,maxLeaf=None,maxFeat="sqrt",
-                                minSplit=2,minLeaf=2,criterion="gini")) """
-for keys,values in high_score.items():
+                                minSplit=2,minLeaf=1,criterion="gini"))
+""" for keys,values in high_score.items():
     print(keys)
-    print(values)
+    print(values) """
 #summarize history for accuracy
 # plt.plot(accuracies)
 # plt.title('model accuracy')

@@ -6,7 +6,7 @@ import os
 
 
 def datasetInfo():
-    return r"C:\Users\jakem\Documents\GitHub\wineQuality_myproj\data", 0, None, 10, 11, 11
+    return r"C:\Users\jakem\Documents\GitHub\wineQuality_myproj\data", 0, None, 11, 11
 
 # takes a folder path to find csv files, 0 for a header and None for no header
 # and 0 for an index column or None for no index column
@@ -22,7 +22,7 @@ def formatData(path, head, indexCol):
     # loop thorugh the files
     for file in fileList:
         # read each file as csv with pandas
-        data = pd.read_csv(file, sep=';', header=head, index_col=indexCol)
+        data = pd.read_csv(file, sep=',', header=head, index_col=indexCol)
         # append to temp list
         dataList.append(data)
     # concat vertically
