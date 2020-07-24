@@ -35,7 +35,7 @@ def treeAnalysis(data, labelCol,maxDepth,minImpurity,maxLeaf,maxFeat,minSplit,mi
     score = dt.score(X_test, y_test)
     dot_data = export_graphviz(dt,out_file=None,feature_names=feat_names,class_names=dt.classes_,filled=True)
     graph = graphviz.Source(dot_data)
-    graph.render("wine")
+    graph.render("wine2")
     print("score: ", (score*100))
     return(score)
 
